@@ -2,17 +2,17 @@ package main
 
 import (
 	"fmt"
+	"github.com/fn-code/go-envoy-example/handler"
 	"log"
 	"net/http"
 	"os"
 	"strconv"
-	"github.com/fn-code/go-envoy-example/handler"
 )
 
 func main() {
 
 	args := os.Args
-	if len(args) < 2 {
+	if len(args) < 3 {
 		log.Fatal("invalid arguments")
 	}
 
@@ -23,6 +23,7 @@ func main() {
 
 	mux := http.NewServeMux()
 	h := &handler.Server{
+		Name: args[2],
 		Port: p,
 	}
 
